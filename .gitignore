@@ -1,0 +1,26 @@
+# ── Entorno y secretos ──────────────────────────────────────────
+.env
+.env.local
+.env.*.local
+
+# ── Python ──────────────────────────────────────────────────────
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+
+# ── Datos generados / caché ──────────────────────────────────────
+resenas_de_restaurantes/cache_sentimiento.csv
+resenas_de_restaurantes/Downloads/
+
+# ── VSCode ──────────────────────────────────────────────────────
+**/.vscode/settings.json
+
+# ── OS ──────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
