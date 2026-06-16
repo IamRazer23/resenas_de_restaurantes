@@ -1,0 +1,25 @@
+# ============================================================================
+# Dependencias - Panama Restaurants Analytics
+# Instalar con:  pip install -r requirements.txt
+# ============================================================================
+
+# --- Dashboard Streamlit (app.py + tab_*_v2.py) ---
+# Versiones fijadas a las del entorno de desarrollo (deploy reproducible).
+streamlit==1.58.0
+pandas==3.0.3
+numpy==2.4.6
+plotly==6.8.0
+
+# --- Pipeline de datos (scripts offline) ---
+# Scraper de Google Places (panama_restaurants_scraper.py)
+requests==2.34.2
+tqdm
+python-dotenv
+
+# Analisis de sentimiento por aspecto con LLM (LLM_sentimental.py)
+groq
+
+# Clustering K-Means y graficas exploratorias (FASE 3 CLUSTERING.py)
+scikit-learn
+matplotlib
+seaborn

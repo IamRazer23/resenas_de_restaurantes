@@ -5,6 +5,8 @@
 
 # ── Python ──────────────────────────────────────────────────────
 .venv/
+venv/
+env/
 __pycache__/
 *.pyc
 *.pyo
@@ -16,6 +18,9 @@ build/
 # ── Datos generados / caché ──────────────────────────────────────
 resenas_de_restaurantes/cache_sentimiento.csv
 resenas_de_restaurantes/Downloads/
+
+# ── Claude Code / entorno personal ──────────────────────────────
+.claude/
 
 # ── VSCode ──────────────────────────────────────────────────────
 **/.vscode/settings.json

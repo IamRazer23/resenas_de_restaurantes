@@ -24,10 +24,10 @@ def load_data():
         return df
     
     except FileNotFoundError as e:
-        st.error(f"❌ Error al cargar archivos CSV: {e}")
+        st.error(f"Error al cargar archivos CSV: {e}")
         st.stop()
     except Exception as e:
-        st.error(f"❌ Error procesando datos: {e}")
+        st.error(f"Error procesando datos: {e}")
         st.stop()
 
 def crear_columnas_calculadas(df):

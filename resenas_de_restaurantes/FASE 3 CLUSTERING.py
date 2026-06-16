@@ -22,7 +22,7 @@ warnings.filterwarnings('ignore')
 # 1. CARGA DE DATOS  (csv corregido con tildes)
 # ─────────────────────────────────────────────
 df = pd.read_csv('panama_restaurants_fixed.csv', encoding='utf-8-sig')
-print(f"✅ Dataset cargado: {df.shape[0]} restaurantes, {df.shape[1]} columnas")
+print(f"Dataset cargado: {df.shape[0]} restaurantes, {df.shape[1]} columnas")
 
 # ─────────────────────────────────────────────
 # 2. MAPEO DE CATEGORÍAS  (Fase 3)
@@ -125,7 +125,7 @@ def sentimiento_desde_rating(r):
 
 df['sentimiento'] = df['rating'].apply(sentimiento_desde_rating)
 
-print("\n📊 Distribución de categorías:")
+print("\nDistribución de categorías:")
 print("  Tipos de comida:\n  ", df['tipo_comida'].value_counts().to_dict())
 print("  Rangos de precio:\n  ", df['rango_precio'].value_counts().to_dict())
 print("  Zonas:\n  ", df['zona_cat'].value_counts().to_dict())
@@ -166,7 +166,7 @@ K_OPTIMO = 5
 kmeans = KMeans(n_clusters=K_OPTIMO, random_state=42, n_init=10)
 df['cluster'] = kmeans.fit_predict(X_scaled)
 
-print(f"\n✅ K-Means ejecutado con K={K_OPTIMO}")
+print(f"\nK-Means ejecutado con K={K_OPTIMO}")
 print(f"   Distribución: {df['cluster'].value_counts().sort_index().to_dict()}")
 
 cluster_labels = {}
@@ -176,11 +176,11 @@ for c in range(K_OPTIMO):
     precio_dom = sub['rango_precio'].mode()[0]
     zona_dom   = sub['zona_cat'].mode()[0]
     rating_avg = sub['rating'].mean()
-    cluster_labels[c] = f"C{c}: {tipo_dom} | {precio_dom} | {zona_dom} | ★{rating_avg:.1f}"
+    cluster_labels[c] = f"C{c}: {tipo_dom} | {precio_dom} | {zona_dom} | {rating_avg:.1f}"
 
 df['cluster_label'] = df['cluster'].map(cluster_labels)
 
-print("\n📌 Perfil de cada cluster:")
+print("\nPerfil de cada cluster:")
 for c, label in cluster_labels.items():
     print(f"   {label}  (n={len(df[df['cluster']==c])})")
 
@@ -259,7 +259,7 @@ ax.tick_params(axis='x', rotation=45)
 plt.tight_layout()
 plt.savefig('fase3_clustering_resultados.png', dpi=150, bbox_inches='tight')
 plt.close()
-print("\n📊 Gráficas guardadas: fase3_clustering_resultados.png")
+print("\nGráficas guardadas: fase3_clustering_resultados.png")
 
 # ─────────────────────────────────────────────
 # 7. EXPORTAR CSV FINAL  (utf-8-sig = tildes OK)
@@ -271,7 +271,7 @@ output_cols = [
 ]
 df[output_cols].to_csv('panama_restaurants_clustered.csv',
                        index=False, encoding='utf-8-sig')
-print("💾 CSV exportado: panama_restaurants_clustered.csv  (encoding: utf-8-sig)")
+print("CSV exportado: panama_restaurants_clustered.csv  (encoding: utf-8-sig)")
 
 # ─────────────────────────────────────────────
 # 8. RESUMEN FINAL
@@ -281,7 +281,7 @@ print("RESUMEN FINAL DE CLUSTERS")
 print("="*70)
 for c in range(K_OPTIMO):
     sub = df[df['cluster'] == c]
-    print(f"\n🔵 CLUSTER {c}  ({len(sub)} restaurantes)")
+    print(f"\nCLUSTER {c}  ({len(sub)} restaurantes)")
     print(f"   Rating promedio : {sub['rating'].mean():.2f}")
     print(f"   Tipo comida top : {sub['tipo_comida'].value_counts().head(3).to_dict()}")
     print(f"   Precio top      : {sub['rango_precio'].value_counts().head(2).to_dict()}")

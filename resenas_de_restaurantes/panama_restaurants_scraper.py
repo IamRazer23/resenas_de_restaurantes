@@ -292,12 +292,12 @@ def main():
         os.makedirs(os.path.dirname(OUTPUT_CSV) or ".", exist_ok=True)
 
         df.to_csv(OUTPUT_CSV, index=False, encoding="utf-8-sig")
-        print(f"  ✓ CSV guardado en: {OUTPUT_CSV}")
+        print(f"  CSV guardado en: {OUTPUT_CSV}")
 
         # JSON con datos crudos (útil para el análisis de reseñas con LLM)
         with open(OUTPUT_JSON, "w", encoding="utf-8") as f:
             json.dump(rows_csv, f, ensure_ascii=False, indent=2)
-        print(f"  ✓ JSON guardado en: {OUTPUT_JSON}")
+        print(f"  JSON guardado en: {OUTPUT_JSON}")
     else:
         print("  [AVISO] No se extrajeron datos. Verifica tu API Key y cuota.")
 
